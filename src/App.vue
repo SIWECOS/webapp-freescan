@@ -84,7 +84,7 @@ export default {
           if (window.jQuery && window.jQuery('.freescanresult .gaugeMeter') && typeof window.jQuery('.freescanresult .gaugeMeter').gaugeMeter !== 'undefined') {
             window.jQuery('.freescanresult .gaugeMeter').gaugeMeter()
           }
-        }.bind(this), 500)
+        }, 500)
       }).catch((err) => {
         this.msg = 'could_not_start'
         console.log(err)
