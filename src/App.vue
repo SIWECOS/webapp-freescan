@@ -22,7 +22,7 @@
       <p>{{ $t("messages.pleasewait") }}</p>
     </div>
 
-    <div v-if="scanresult">
+    <div v-if="scanresult" class="freescanresult">
       <div class="scanners-wrapper" v-show="scanresult">
         <div class="scanner-content" v-for="(scanner) in scanresult.scanners">
           <scanner-details v-bind:scanner="scanner"></scanner-details>
@@ -81,8 +81,8 @@ export default {
 
         // Trigger gauge
         setTimeout(function () {
-          if (window.jQuery && window.jQuery('.domain-id-' + this.domain.id + ' .gaugeMeter') && typeof window.jQuery('.domain-id-' + this.domain.id + ' .gaugeMeter').gaugeMeter !== 'undefined') {
-            window.jQuery('.domain-id-' + this.domain.id + ' .gaugeMeter').gaugeMeter()
+          if (window.jQuery && window.jQuery('.freescanresult .gaugeMeter') && typeof window.jQuery('.freescanresult .gaugeMeter').gaugeMeter !== 'undefined') {
+            window.jQuery('.freescanresult .gaugeMeter').gaugeMeter()
           }
         }.bind(this), 500)
       }).catch((err) => {
