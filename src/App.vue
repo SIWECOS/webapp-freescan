@@ -11,10 +11,12 @@
         <form id="freescanform" @submit.prevent="submit">
           <p class="freescan-domain">
             <label for="domain">{{ $t("messages.field_domain") }}</label><br>
-            <input name="domain" id="domain" :placeholder="$t('messages.field_domain')" type="url" required="true" v-model="domain.domain">
+            <input name="domain" id="domain" :placeholder="$t('messages.field_domain')" type="url" required="true"
+                   v-model="domain.domain">
           </p>
           <p class="freescan-submit">
-            <input name="wp-submit" id="wppb-submit" class="button button-primary" :value="$t('messages.field_submit')" type="submit" :disabled="fetchInterval !== false"><br>
+            <input name="wp-submit" id="wppb-submit" class="button button-primary" :value="$t('messages.field_submit')"
+                   type="submit" :disabled="fetchInterval !== false"><br>
           </p>
         </form>
       </div>
@@ -22,81 +24,85 @@
       <div v-if="fetchInterval !== false" class="freescanwaitmessage">
         <p>{{ $t("messages.pleasewait") }}</p>
       </div>
-
+      <div style="padding-bottom: 25px;"></div>
       <div v-if="scanresult">
+        <h3>Gesamtergebnis</h3>
+        <div class="impact-gauge gaugeMeter" :data-percent="scanresult.weightedMedia.toFixed(0)" data-size="100"
+             data-width="20" data-style="Arch" data-theme="Red-Gold-Green" data-animate_gauge_colors="1"
+             style="width: 100px;" v-if="scanresult">
+
+        </div>
         <div class="scanners-wrapper" v-show="scanresult">
           <div class="scanner-content" v-for="(scanner) in scanresult.scanners">
             <scanner-details v-bind:scanner="scanner"></scanner-details>
           </div>
         </div>
 
-        <div class="impact-gauge gaugeMeter" :data-percent="scanresult.weightedMedia.toFixed(0)" data-size="100" data-width="20" data-style="Arch" data-theme="Red-Gold-Green" data-animate_gauge_colors="1" style="width: 100px;" v-if="scanresult">
 
-        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import api from './services/api.js'
-import ScannerDetails from './components/ScannerDetails'
+  import api from './services/api.js'
+  import ScannerDetails from './components/ScannerDetails'
 
-export default {
-  name: 'app',
-  data () {
-    return {
-      scanresult: false,
-      domain: {
-        'domain': ''
+  export default {
+    name: 'app',
+    data () {
+      return {
+        scanresult: false,
+        domain: {
+          'domain': ''
+        },
+        resultId: false,
+        msg: '',
+        fetchInterval: false
+      }
+    },
+    methods: {
+      submit: function () {
+        this.getResult()
+        this.fetchInterval = setInterval(this.getResult, 3000)
       },
-      resultId: false,
-      msg: '',
-      fetchInterval: false
-    }
-  },
-  methods: {
-    submit: function () {
-      this.getResult()
-      this.fetchInterval = setInterval(this.getResult, 3000)
-    },
-    getResult: function () {
-      api.$http.post(api.urls.start_url, this.domain).then((response) => {
-        if (response.data.status === 3) {
-          this.resultId = response.data.id
+      getResult: function () {
+        api.$http.post(api.urls.start_url, this.domain).then((response) => {
+          if (response.data.status === 3) {
+            this.resultId = response.data.id
 
-          clearInterval(this.fetchInterval)
-          this.fetchInterval = false
+            clearInterval(this.fetchInterval)
+            this.fetchInterval = false
 
-          this.processResultResponse()
-        }
-      }).catch((err) => {
-        this.msg = 'could_not_start'
-        console.log(err)
-      })
-    },
-    processResultResponse: function () {
-      api.$http.get(api.urls.fetch_url + this.resultId).then((response) => {
-        this.msg = ''
-        this.scanresult = response.data
-
-        // Trigger gauge
-        setTimeout(function () {
-          if (window.jQuery && window.jQuery('.freescanform .gaugeMeter') && typeof window.jQuery('.freescanresult .gaugeMeter').gaugeMeter !== 'undefined') {
-            window.jQuery('.freescanform .gaugeMeter').gaugeMeter()
+            this.processResultResponse()
           }
-        }, 500)
-      }).catch((err) => {
-        this.msg = 'could_not_start'
-        console.log(err)
-      })
+        }).catch((err) => {
+          this.msg = 'could_not_start'
+          console.log(err)
+        })
+      },
+      processResultResponse: function () {
+        api.$http.get(api.urls.fetch_url + this.resultId).then((response) => {
+          this.msg = ''
+          this.scanresult = response.data
+
+          // Trigger gauge
+          setTimeout(function () {
+            if (window.jQuery && window.jQuery('.freescanform .gaugeMeter') && typeof window.jQuery('.freescanresult .gaugeMeter').gaugeMeter !== 'undefined') {
+              window.jQuery('.freescanform .gaugeMeter').gaugeMeter()
+            }
+          }, 500)
+        }).catch((err) => {
+          this.msg = 'could_not_start'
+          console.log(err)
+        })
+      }
+    },
+    components: {
+      // <my-component> will only be available in parent's template
+      'scanner-details': ScannerDetails
     }
-  },
-  components: {
-    // <my-component> will only be available in parent's template
-    'scanner-details': ScannerDetails
   }
-}
 </script>
 
 <style>
