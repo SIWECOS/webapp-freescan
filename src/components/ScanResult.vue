@@ -11,12 +11,14 @@
     <div class="scanner-check-item-description" v-show="showDetails">
       <p class="scanner-check-item-description-title">{{ scanresult.description }}</p>
       <p class="scanner-check-item-description-report" v-if="scanresult.report">{{ scanresult.report }}</p>
+      <div style="clear: both;"></div>
       <small><a :href="'https://www.siwecos.de/wiki/' + scanresult.name" :title="$t('messages.more_info')"
                 target="_blank">{{ $t('messages.more_info') }} &gt;&gt;</a></small>
-
+      <div style="clear: both;"></div>
       <ul class="scanner-check-item-details" v-show="showDetails">
         <li v-for="(detail) in scanresult.testDetails">{{ detail.name }}</li>
       </ul>
+      <div style="clear: both; padding-bottom: 20px"></div>
     </div>
 
 
