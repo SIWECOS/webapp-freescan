@@ -11,7 +11,7 @@
         <form id="freescanform" @submit.prevent="submit">
           <p class="freescan-domain">
             <label for="domain">{{ $t("messages.field_domain") }}</label><br>
-            <input name="domain" id="domain" :placeholder="$t('messages.field_domain')" type="url" required="true"
+            <input name="domain" id="domain" :placeholder="$t('messages.field_domain')" type="text" required="true"
                    v-model="domain.domain">
           </p>
           <p class="freescan-submit">
@@ -63,6 +63,10 @@
     },
     methods: {
       submit: function () {
+        this.scanresult = false
+        if (!this.domain.domain.toString().startsWith('http')) {
+          this.domain.domain = 'https://' + this.domain.domain.toString()
+        }
         this.getResult()
         this.fetchInterval = setInterval(this.getResult, 3000)
       },

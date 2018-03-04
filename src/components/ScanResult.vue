@@ -1,13 +1,7 @@
 <template>
   <div class="scanner-check-item-data" v-if="scanresult.scoreTypeRaw !== 'hidden'">
-    <div class="col-20">
-        <span class="round-check"
-              v-bind:class="{ 'score-red': scanresult.score < 30, 'score-yellow': scanresult.score >= 30 && scanresult.score < 80, 'score-green': scanresult.score >=80 }">
-            {{ scanresult.scoreType }}: {{ scanresult.score }}
-        </span>
-    </div>
     <div class="col-85">
-      <span class="scanner-check-data">{{ scanresult.name}}</span>
+      <span class="round-check scanner-check-data" v-bind:class="{ 'score-red': scanresult.score < 30, 'score-orange': scanresult.score >= 30 && scanresult.score < 50, 'score-yellow': scanresult.score >= 50 && scanresult.score < 80, 'score-green': scanresult.score >=80 }">{{ scanresult.name}}</span>
     </div>
     <div class="col-20">
       <button class="btn btn-primary" v-on:click="showDetails = (showDetails) ? 0 : 1">{{ $t('messages.more_info') }}
@@ -32,32 +26,18 @@
 </template>
 
 <style>
-  .col-15 {
-    width: 15%;
-    float: left;
-  }
 
   .col-85 {
-    width: 60%;
+    width: 70%;
     float: left;
   }
 
   .col-20{
-    width: 20%;
+    width: 30%;
     float: left;
+    text-align: center;
   }
 
-  .score-red {
-    color: red;
-  }
-
-  .score-yellow {
-    color: blue;
-  }
-
-  .score-green {
-    color: green;
-  }
 </style>
 <script>
   export default {
