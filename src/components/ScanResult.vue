@@ -4,7 +4,7 @@
       <span class="round-check scanner-check-data" v-bind:class="{ 'score-red': scanresult.score < 30, 'score-orange': scanresult.score >= 30 && scanresult.score < 50, 'score-yellow': scanresult.score >= 50 && scanresult.score < 80, 'score-green': scanresult.score >=80 }">{{ scanresult.name}}</span>
     </div>
     <div class="col-20">
-      <button class="btn btn-primary" v-on:click="showDetails = (showDetails) ? 0 : 1">{{ $t('messages.more_info') }}
+      <button class="btn btn-primary" v-bind:class="(showDetails) ? 'active' : ''" v-on:click="showDetails = (showDetails) ? 0 : 1">{{ $t('messages.more_info') }}
       </button>
     </div>
  <div style="clear: both"></div>
@@ -53,7 +53,8 @@
       messages: {
         de: {
           messages: {
-            more_info: 'Mehr Informationen'
+            more_info: 'Mehr Informationen',
+            detailed_info: 'Ausführliche Beschreibung >>>'
           }
         }
       }
