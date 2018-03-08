@@ -12,7 +12,7 @@
       <p class="scanner-check-item-description-title" v-html="scanresult.description"></p>
       <p class="scanner-check-item-description-report" v-if="scanresult.report" v-html="scanresult.report"></p>
       <div style="clear: both;"></div>
-      <small><a :href="'https://www.siwecos.de/wiki/' + scanresult.name" :title="$t('messages.more_info')"
+      <small><a :href="scanresult.link"
                 target="_blank">{{ $t('messages.more_info') }} &gt;&gt;</a></small>
       <div style="clear: both;"></div>
       <ul class="scanner-check-item-details" v-show="showDetails">
