@@ -26,19 +26,11 @@
       </div>
       <div style="padding-bottom: 25px;"></div>
       <div v-if="scanresult">
-        <h3>Gesamtergebnis</h3>
-        <div class="impact-gauge gaugeMeter" :data-percent="scanresult.weightedMedia.toFixed(0)" data-size="100"
-             data-width="20" data-style="Arch" data-theme="Red-Gold-Green" data-animate_gauge_colors="1"
-             style="width: 100px;" v-if="scanresult">
-
-        </div>
         <div class="scanners-wrapper" v-show="scanresult">
           <div class="scanner-content" v-for="(scanner) in scanresult.scanners">
             <scanner-details v-bind:scanner="scanner"></scanner-details>
           </div>
         </div>
-
-
       </div>
     </div>
   </div>
