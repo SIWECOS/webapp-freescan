@@ -60,24 +60,30 @@
           this.domain.domain = 'https://' + this.domain.domain.toString()
         }
         this.getResult()
-        this.fetchInterval = setInterval(this.getResult, 3000)
+        this.fetchInterval = setInterval(this.getStatus, 3000)
       },
       getResult: function () {
         api.$http.post(api.urls.start_url, this.domain).then((response) => {
-          if (response.data.status === 3) {
-            this.resultId = response.data.id
-
-            clearInterval(this.fetchInterval)
-            this.fetchInterval = false
-
-            this.processResultResponse()
-          }
+          this.resultId = response.data.id
         }).catch((err) => {
           this.msg = 'could_not_start'
           console.log(err)
         })
       },
+      getStatus: function () {
+        if (this.resultId !== false) {
+          api.$http.get(api.urls.status_url + this.resultId).then((response) => {
+            console.log(response)
+            if (response.data.status === 3) {
+              clearInterval(this.fetchInterval)
+              this.fetchInterval = false
+              this.processResultResponse()
+            }
+          })
+        }
+      },
       processResultResponse: function () {
+        clearInterval(this.fetchInterval)
         api.$http.get(api.urls.fetch_url + this.resultId).then((response) => {
           this.msg = ''
           this.scanresult = response.data
