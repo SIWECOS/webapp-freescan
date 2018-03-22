@@ -11,7 +11,8 @@ const messages = {
       'field_domain': 'Domain',
       'field_submit': 'Scan starten',
       'could_not_start': 'Starten des Scans fehlgeschlagen, bitte versuchen Sie es später erneut',
-      'pleasewait': 'Der Scan Ihrer Domain läuft, bitte warten...'
+      'pleasewait': 'Der Scan Ihrer Domain läuft, bitte warten...',
+      'domainnotfound': 'Die Domain ist nicht über HTTPS erreichbar'
     }
   }
 }

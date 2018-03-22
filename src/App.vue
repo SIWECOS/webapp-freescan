@@ -24,6 +24,9 @@
       <div v-if="fetchInterval !== false" class="freescanwaitmessage">
         <p>{{ $t("messages.pleasewait") }}</p>
       </div>
+      <div v-if="errorMessage !== false" class="freescanwaitmessage">
+        <p style="color:red">{{ $t("messages.domainnotfound") }}</p>
+      </div>
       <div style="padding-bottom: 25px;"></div>
       <div v-if="scanresult">
         <div class="scanners-wrapper" v-show="scanresult">
@@ -45,6 +48,8 @@
     data () {
       return {
         scanresult: false,
+        ping: true,
+        errorMessage: false,
         domain: {
           'domain': ''
         },
@@ -55,29 +60,38 @@
     },
     methods: {
       submit: function () {
+        this.errorMessage = false
         this.scanresult = false
         if (!this.domain.domain.toString().startsWith('http')) {
+          console.log('check https')
           this.domain.domain = 'https://' + this.domain.domain.toString()
         }
         this.getResult()
-        this.fetchInterval = setInterval(this.getResult, 3000)
+        this.fetchInterval = setInterval(this.getStatus, 3000)
       },
       getResult: function () {
         api.$http.post(api.urls.start_url, this.domain).then((response) => {
-          if (response.data.status === 3) {
-            this.resultId = response.data.id
-
-            clearInterval(this.fetchInterval)
-            this.fetchInterval = false
-
-            this.processResultResponse()
-          }
+          this.resultId = response.data.id
         }).catch((err) => {
           this.msg = 'could_not_start'
           console.log(err)
         })
       },
+      getStatus: function () {
+        if (this.resultId !== false) {
+          api.$http.get(api.urls.status_url + this.resultId).then((response) => {
+            console.log(response)
+            if (response.data.status === 3) {
+              clearInterval(this.fetchInterval)
+              this.fetchInterval = false
+              this.resultId = false
+              this.processResultResponse()
+            }
+          })
+        }
+      },
       processResultResponse: function () {
+        clearInterval(this.fetchInterval)
         api.$http.get(api.urls.fetch_url + this.resultId).then((response) => {
           this.msg = ''
           this.scanresult = response.data
@@ -96,7 +110,8 @@
     },
     components: {
       // <my-component> will only be available in parent's template
-      'scanner-details': ScannerDetails
+      'scanner-details':
+      ScannerDetails
     }
   }
 </script>
