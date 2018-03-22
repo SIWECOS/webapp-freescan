@@ -2,9 +2,12 @@
   <div class="scanner-item-data">
     <span class="scanner-data">{{ scanner.scanner_type }}</span>
 
-    <button class="btn btn-primary" v-on:click="showDetails = (showDetails) ? 0 : 1">{{ $t('messages.more_info') }}
+    <button class="btn btn-primary" v-on:click="showDetails = (showDetails) ? 0 : 1" v-if="scanner.description">
+      {{ $t('messages.more_info') }}
     </button>
-    {{ scanner.showDetails }}
+
+    <a :href="'https://www.siwecos.de/wiki/' + scanner.scanner_type" :title="$t('messages.more_info')"
+       target="_blank" v-if="!scanner.description">{{ $t('messages.more_info') }} &gt;&gt;</a>
 
     <div class="scanner-check-item-description" v-show="showDetails">
       <div v-html="scanner.description"></div>
