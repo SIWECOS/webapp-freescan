@@ -83,9 +83,9 @@
             console.log(response)
             if (response.data.status === 3) {
               clearInterval(this.fetchInterval)
+              this.processResultResponse()
               this.fetchInterval = false
               this.resultId = false
-              this.processResultResponse()
             }
           })
         }
