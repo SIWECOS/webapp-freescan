@@ -16,7 +16,7 @@
                 target="_blank">{{ $t('messages.more_info') }} &gt;&gt;</a></small>
     </div>
 
-    <br><span><small>{{ $t('messages.lastScan') }}: {{ scanner.updated_at }}</small></span>
+    <br><span><small>{{ $t('messages.lastScan') }}: {{ scanner.updated_at_human }}</small></span>
     <p></p>
 
     <div class="scanner-gauge">
@@ -49,6 +49,7 @@
 </style>
 <script>
   import ScanResult from './ScanResult'
+  import moment from 'moment'
 
   export default {
     components: {ScanResult},
@@ -67,6 +68,9 @@
           }
         }
       }
+    },
+    created: function () {
+        this.scanner.updated_at_human = moment(String(this.scanner.updated_at)).add('1', 'hours').format('DD.MM.YYYY HH:mm')
     },
     props: ['scanner']
   }
