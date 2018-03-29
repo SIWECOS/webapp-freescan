@@ -9,6 +9,7 @@ const messages = {
       'headline': 'Kostenfreier Sicherheitscheck',
       'description': 'Geben Sie die Adresse Ihrer Website an um einen kostenfreien Sicherheitscheck durch SIWECOS zu erhalten:',
       'field_domain': 'Domain',
+      'field_domain_placeholder': 'Domain, bspw. https://www.example.org',
       'field_submit': 'Scan starten',
       'could_not_start': 'Starten des Scans fehlgeschlagen, bitte versuchen Sie es später erneut',
       'pleasewait': 'Der Scan Ihrer Domain läuft, bitte warten...',

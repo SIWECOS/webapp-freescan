@@ -11,7 +11,7 @@
         <form id="freescanform" @submit.prevent="submit">
           <p class="freescan-domain">
             <label for="domain">{{ $t("messages.field_domain") }}</label><br>
-            <input name="domain" id="domain" :placeholder="$t('messages.field_domain')" type="text" required="true"
+            <input name="domain" id="domain" :placeholder="$t('messages.field_domain_placeholder')" type="text" required="true"
                    v-model="domain.domain">
           </p>
           <p class="freescan-submit">
