@@ -3,7 +3,7 @@
     <div class="freescanform">
       <h3>{{ $t("messages.headline") }}</h3>
 
-      <div v-html="$t( 'message.description' )"></div>
+      <div v-html="$t('messages.description')"> </div>
 
       <p class="wppb-error" v-if="msg">{{ $t('messages.' + msg) }}</p>
 
