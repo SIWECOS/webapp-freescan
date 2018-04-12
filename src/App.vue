@@ -34,6 +34,10 @@
             <scanner-details v-bind:scanner="scanner"></scanner-details>
           </div>
         </div>
+        <div class="registernow-box">
+          <h3>{{ $t('messages.registernowhead') }}</h3>
+          <p>{{ $t('messages.registernow') }}</p>
+        </div>
       </div>
     </div>
   </div>
