@@ -7,7 +7,7 @@ const messages = {
   de: {
     messages: {
       'headline': 'SIWECOS Schnell-Check',
-      'description': '<p>Der SIWECOS Schnell-Check prüft eine Webseite auf einfache Schwachstellen.</p><p>Bitte registrieren Sie sich als Webseiten-Betreiber KOSTENLOS für SIWECOS, um ihre Webseite zusätzlich auf weitere kritische Schwachstellen prüfen zu könne - denn bei SIWECOS registrierte Webseiten werden täglich ausführlich auf kritische Schwachstellen geprüft und der Webseiten-Betreiber bei einem Fund umgehend benachrichtigt.</p>',
+      'description': '<p><b>Hinweis:</b> Nur registrierte Webseiten können auf zusätzliche kritische Schwachstellen hin geprüft werden.</p><p>Die Registrierung und Nutzung von <b>SIWECOS ist kostenlos!</b><br/>Bitte <a href="/app/#/register">registrieren Sie ihre Webseite</a> um weitere Funktionen wie den <b>täglichen Sicherheitscheck</b>, <b>automatische Benachrichtigungen</b> beim Fund einer kritische Schwachstelle und den <b>ausführlichen Sicherheitsbericht</b> für ihre Webseite nutzen zu können.</p>',
       'field_domain': 'Domain',
       'field_domain_placeholder': 'Domain, bspw. https://www.example.org',
       'field_submit': 'Scan starten',
