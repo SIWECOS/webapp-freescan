@@ -12,6 +12,7 @@ const messages = {
       "field_domain_placeholder": "Domain, bspw. https://www.example.org",
       "field_submit": "Scan starten",
       "could_not_start": "Starten des Scans fehlgeschlagen, bitte versuchen Sie es später erneut",
+      "invalid_domain": "Bitte geben Sie eine gültige Websiteadresse an",
       "pleasewait": "Der Scan Ihrer Domain läuft, bitte warten...",
       "domainnotfound": "Die Domain ist nicht über HTTPS erreichbar",
       "registernowhead": "Stets auf der sicheren Seite sein:",

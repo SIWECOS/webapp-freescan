@@ -77,8 +77,15 @@
         api.$http.post(api.urls.start_url, this.domain).then((response) => {
           this.resultId = response.data.id
         }).catch((err) => {
+          clearInterval(this.fetchInterval)
+          this.fetchInterval = false
+          this.resultId = false
+
           this.msg = 'could_not_start'
-          console.log(err)
+
+          if (err.response.status === 422) {
+            this.msg = 'invalid_domain'
+          }
         })
       },
       getStatus: function () {
