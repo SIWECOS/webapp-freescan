@@ -74,6 +74,8 @@
         this.fetchInterval = setInterval(this.getStatus, 3000)
       },
       getResult: function () {
+        this.msg = ''
+
         api.$http.post(api.urls.start_url, this.domain).then((response) => {
           this.resultId = response.data.id
         }).catch((err) => {
