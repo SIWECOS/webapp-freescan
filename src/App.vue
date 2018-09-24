@@ -108,13 +108,6 @@
         api.$http.get(api.urls.fetch_url + this.resultId).then((response) => {
           this.msg = ''
           this.scanresult = response.data
-
-          // Trigger gauge
-          setTimeout(function () {
-            if (window.jQuery && window.jQuery('.freescanform .gaugeMeter') && typeof window.jQuery('.freescanresult .gaugeMeter').gaugeMeter !== 'undefined') {
-              window.jQuery('.freescanform .gaugeMeter').gaugeMeter()
-            }
-          }, 500)
         }).catch((err) => {
           this.msg = 'could_not_start'
           console.log(err)
