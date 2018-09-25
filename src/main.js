@@ -13,4 +13,3 @@ new Vue({
   i18n,
   render: createElement => createElement(App)
 })
-
