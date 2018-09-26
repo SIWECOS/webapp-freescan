@@ -16,6 +16,9 @@ const messages = {
       "pleasewait": "Der Scan Ihrer Domain läuft, bitte warten...",
       "domainnotfound": "Die Domain ist nicht über HTTPS erreichbar",
       "registernowhead": "Stets auf der sicheren Seite sein:",
+      "lastScan": "Letzter Scan",
+      "more_info": "Mehr Informationen",
+      "detailed_info": "Ausführliche Beschreibung >>>",
       "registernow": "Registrieren Sie sich jetzt für den kostenlosen Sicherheits-Check. SIWECOS scannt Ihre Webseite täglich und informiert Sie proaktiv, wenn Sicherheitslücken auftauchen. Nur durch eine Registrierung wird Ihre Seite dauerhaft und kostenlos überwacht und Sie können im Notfall schnell reagieren. SIWECOS bietet umfangreiche Hilfestellungen und Informationen, so schützen Sie sich und Ihre Kunden."
     }
   },
@@ -31,6 +34,9 @@ const messages = {
       "pleasewait": "Your domain's scan is being processed, please wait...",
       "domainnotfound": "Your domain can't be reached using HTTPS",
       "registernowhead": "Stay on the safe side:",
+      "lastScan": "Last Scan",
+      "more_info": "More Information",
+      "detailed_info": "Detailed Description >>>",
       "registernow": "Signup now for the free Security-Check. SIWECOS performs daily website scans and informs your proactively, when security issues are found. Only registering your site will provide constant monitoring and let you react quickly in case of upcoming issues. SIWECOS provides comprehensive help and information and let's you protect yourself and your clients."
     }
   }
