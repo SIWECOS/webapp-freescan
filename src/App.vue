@@ -105,7 +105,7 @@
       },
       processResultResponse: function () {
         clearInterval(this.fetchInterval)
-        api.$http.get(api.urls.fetch_url + this.resultId).then((response) => {
+        api.$http.get(api.urls.fetch_url + this.resultId + '/' + this.$i18n.locale).then((response) => {
           this.msg = ''
           this.scanresult = response.data
         }).catch((err) => {
