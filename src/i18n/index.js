@@ -16,14 +16,48 @@ const messages = {
       "pleasewait": "Der Scan Ihrer Domain läuft, bitte warten...",
       "domainnotfound": "Die Domain ist nicht über HTTPS erreichbar",
       "registernowhead": "Stets auf der sicheren Seite sein:",
+      "lastScan": "Letzter Scan",
+      "more_info": "Mehr Informationen",
+      "detailed_info": "Ausführliche Beschreibung >>>",
       "registernow": "Registrieren Sie sich jetzt für den kostenlosen Sicherheits-Check. SIWECOS scannt Ihre Webseite täglich und informiert Sie proaktiv, wenn Sicherheitslücken auftauchen. Nur durch eine Registrierung wird Ihre Seite dauerhaft und kostenlos überwacht und Sie können im Notfall schnell reagieren. SIWECOS bietet umfangreiche Hilfestellungen und Informationen, so schützen Sie sich und Ihre Kunden."
     }
+  },
+  "en": {
+    "messages": {
+      "headline": "SIWECOS Quick-Check",
+      "description": "<p><b>Please note:</b> Only registered websites can additionally be tested on critical vulnerabilites.</p><p>Registration and usage of <b>SIWECOS is free!</b><br/>Please <a href='/en/app/#/register'>register your site</a> to be able to use additional features as <b>daily security checks</b>, <b>automated notifications</b> when issues are detected and <b>comprehensive security reports</b>.</p>",
+      "field_domain": "Domain",
+      "field_domain_placeholder": "Domain, i.e. https://www.example.org",
+      "field_submit": "Start scan",
+      "could_not_start": "Starting the scan failed, please try again later",
+      "invalid_domain": "Please provide a valid domain",
+      "pleasewait": "Your domain's scan is being processed, please wait...",
+      "domainnotfound": "Your domain can't be reached using HTTPS",
+      "registernowhead": "Stay on the safe side:",
+      "lastScan": "Last Scan",
+      "more_info": "More Information",
+      "detailed_info": "Detailed Description >>>",
+      "registernow": "Signup now for the free Security-Check. SIWECOS performs daily website scans and informs your proactively, when security issues are found. Only registering your site will provide constant monitoring and let you react quickly in case of upcoming issues. SIWECOS provides comprehensive help and information and let's you protect yourself and your clients."
+    }
+  }
+}
+
+let locale = "de";
+
+if (document.documentElement && document.documentElement.getAttribute("lang"))
+{
+  const langAttribute = document.documentElement.getAttribute("lang");
+  const langTag = langAttribute.substr(0,2);
+
+  if (typeof messages[langTag] === "object")
+  {
+    locale = langTag;
   }
 }
 
 // Create VueI18n instance with options
 const i18n = new VueI18n({
-  locale: 'de', // set locale
+  "locale": locale, // set locale
   messages // set locale messages
 })
 

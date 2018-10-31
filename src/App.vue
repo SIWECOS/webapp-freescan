@@ -93,28 +93,22 @@
       getStatus: function () {
         if (this.resultId !== false) {
           api.$http.get(api.urls.status_url + this.resultId).then((response) => {
-            console.log(response)
             if (response.data.status === 3) {
               clearInterval(this.fetchInterval)
-              this.processResultResponse()
-              this.fetchInterval = false
-              this.resultId = false
+              window.setTimeout(this.fetchResult(), 1000)
             }
           })
         }
       },
+      fetchResult: function () {
+        this.processResultResponse()
+        this.fetchInterval = false
+        this.resultId = false
+      },
       processResultResponse: function () {
-        clearInterval(this.fetchInterval)
-        api.$http.get(api.urls.fetch_url + this.resultId).then((response) => {
+        api.$http.get(api.urls.fetch_url + this.resultId + '/' + this.$i18n.locale).then((response) => {
           this.msg = ''
           this.scanresult = response.data
-
-          // Trigger gauge
-          setTimeout(function () {
-            if (window.jQuery && window.jQuery('.freescanform .gaugeMeter') && typeof window.jQuery('.freescanresult .gaugeMeter').gaugeMeter !== 'undefined') {
-              window.jQuery('.freescanform .gaugeMeter').gaugeMeter()
-            }
-          }, 500)
         }).catch((err) => {
           this.msg = 'could_not_start'
           console.log(err)
