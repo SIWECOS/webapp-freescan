@@ -93,7 +93,6 @@
       getStatus: function () {
         if (this.resultId !== false) {
           api.$http.get(api.urls.status_url + this.resultId).then((response) => {
-
             if (response.data.status === 3) {
               clearInterval(this.fetchInterval)
               window.setTimeout(this.fetchResult(), 1000)
