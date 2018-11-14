@@ -72,7 +72,9 @@
       }
     },
     created: function () {
-      this.scanner.updated_at_human = moment(String(this.scanner.updated_at)).add('1', 'hours').format('DD.MM.YYYY HH:mm')
+      let offset = new Date().getTimezoneOffset()
+
+      this.scanner.updated_at_human = moment(String(this.scanner.updated_at)).add(parseInt(offset / 60 * -1), 'hours').format('DD.MM.YYYY HH:mm')
     },
     props: ['scanner']
   }
