@@ -36,7 +36,7 @@ const messages = {
       "domainnotfound": "Your domain can't be reached using HTTPS",
       "registernowhead": "Stay on the safe side:",
       "lastScan": "Last Scan",
-      "more_info": "More Information",
+      "more_info": "Background Information",
       "domain_timedout": "The domain in question is not responding or does not exist",
       "detailed_info": "Detailed Description >>>",
       "registernow": "Signup now for the free Security-Check. SIWECOS performs daily website scans and informs your proactively, when security issues are found. Only registering your site will provide constant monitoring and let you react quickly in case of upcoming issues. SIWECOS provides comprehensive help and information and let's you protect yourself and your clients."
