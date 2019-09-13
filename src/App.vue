@@ -33,6 +33,21 @@
           <div class="scanner-content" v-for="(scanner) in scanresult.scanners">
             <scanner-details v-bind:scanner="scanner"></scanner-details>
           </div>
+          <div class="scanner-content" v-for="(scanner) in ['VERSION','PORT']">
+            <div class="scanner-item-data">
+              <span class="scanner-data">{{ $t(`messages.scannername-${scanner.toLowerCase()}`) }}</span>
+
+              <p>{{ $t("messages.scannernotinfree") }}</p>
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="126" height="126" version="1.1">
+                <g transform="translate(63,63)">
+                  <text x="0" y="0%" dominant-baseline="central" text-anchor="middle" font-size="200%">-</text>
+                  <path d="M-35.35,35.36 A50,50 0 1 1 35.35,35.36" stroke="lightgrey" stroke-width="25" stroke-linecap="round" fill="none"/>
+                </g>
+              </svg>
+            </div>
+            <div style="clear:both"></div>
+          </div>
         </div>
         <div class="registernow-box">
           <h3>{{ $t('messages.registernowhead') }}</h3>
