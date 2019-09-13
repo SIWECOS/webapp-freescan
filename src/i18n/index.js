@@ -22,7 +22,10 @@ const messages = {
       "background_info": "Hintergrundinformationen",
       "domain_timedout": "Die Domain antwortet nicht oder existiert nicht",
       "detailed_info": "Ausführliche Beschreibung >>>",
-      "registernow": "Registrieren Sie sich jetzt für den kostenlosen Sicherheits-Check. SIWECOS scannt Ihre Webseite täglich und informiert Sie proaktiv, wenn Sicherheitslücken auftauchen. Nur durch eine Registrierung wird Ihre Seite dauerhaft und kostenlos überwacht und Sie können im Notfall schnell reagieren. SIWECOS bietet umfangreiche Hilfestellungen und Informationen, so schützen Sie sich und Ihre Kunden."
+      "registernow": "Registrieren Sie sich jetzt für den kostenlosen Sicherheits-Check. SIWECOS scannt Ihre Webseite täglich und informiert Sie proaktiv, wenn Sicherheitslücken auftauchen. Nur durch eine Registrierung wird Ihre Seite dauerhaft und kostenlos überwacht und Sie können im Notfall schnell reagieren. SIWECOS bietet umfangreiche Hilfestellungen und Informationen, so schützen Sie sich und Ihre Kunden.",
+      "scannername-port": "Port-Scanner",
+      "scannername-version": "CMS-Versions-Scanner",
+      "scannernotinfree": "Dieser Scanner ist nur für eingeloggte Benutzer verfügbar, bitte <a href='/de/app/#/'>melden Sie sich an</a>."
     }
   },
   "en": {
@@ -43,7 +46,10 @@ const messages = {
       "background_info": "Background Information",
       "domain_timedout": "The domain in question is not responding or does not exist",
       "detailed_info": "Detailed Description >>>",
-      "registernow": "Signup now for the free Security-Check. SIWECOS performs daily website scans and informs your proactively, when security issues are found. Only registering your site will provide constant monitoring and let you react quickly in case of upcoming issues. SIWECOS provides comprehensive help and information and let's you protect yourself and your clients."
+      "registernow": "Signup now for the free Security-Check. SIWECOS performs daily website scans and informs your proactively, when security issues are found. Only registering your site will provide constant monitoring and let you react quickly in case of upcoming issues. SIWECOS provides comprehensive help and information and let's you protect yourself and your clients.",
+      "scannername-port": "Port-Scanner",
+      "scannername-version": "CMS-Version-Scanner",
+    "scannernotinfree": "This scanner is only useable for registered users, please <a href='/en/app/#/'>login</a> to see your result."
     }
   }
 }
