@@ -44,7 +44,7 @@
                 </g>
               </svg>
               <div class="scanner-check-wrapper">
-                  <p v-html="$t('messages.scannernotinfree')"></p>
+                  <div v-html="$t('messages.scannernotinfree')"></div>
               </div>
             </div>
             <div style="clear:both"></div>
