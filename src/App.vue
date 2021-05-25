@@ -101,6 +101,10 @@
 
           this.msg = 'could_not_start'
 
+          if (err.response.status === 502) {
+            this.msg = 'domain_timedout'
+          }
+
           if (err.response.status === 422) {
             this.msg = 'invalid_domain'
           }
